@@ -1,0 +1,24 @@
+baseURL = 'https://vcphoenix.github.io/'
+locale = 'de-DE'
+title = 'Volleyball Club Phoenix'
+disableKinds = ["taxonomy", "term"]
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[menu]
+  [[menu.main]]
+    identifier = 'about'
+    name = 'Über uns'
+    url = '/about/'
+    weight = 10
+  [[menu.main]]
+    identifier = 'news'
+    name = 'News'
+    url = '/news/'
+    weight = 20
+  [[menu.main]]
+    identifier = 'calendar'
+    name = 'Kalender'
+    url = '/calendar/'
+    weight = 30
