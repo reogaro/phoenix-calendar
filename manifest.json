@@ -1,7 +1,7 @@
 {
   "name": "VC Phönix Vereinskalender",
   "short_name": "VC Phönix",
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ff5800",
   "theme_color": "#ff5800",

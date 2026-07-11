@@ -48,6 +48,7 @@ export default async function middleware(req) {
     <meta property="og:description" content="Alle Termine, Spiele und Events des VC Phönix. (Intern)">
     <meta property="og:image" content="https://phoenix-calendar.vercel.app/og-image.png">
     <meta property="og:type" content="website">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         body {
@@ -140,7 +141,8 @@ export default async function middleware(req) {
   return new Response(html, {
     status: 200,
     headers: {
-      'Content-Type': 'text/html; charset=utf-8'
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate'
     }
   });
 }
