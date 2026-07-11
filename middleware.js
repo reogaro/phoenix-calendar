@@ -5,8 +5,9 @@ export const config = {
      * - favicon.ico (favicon file)
      * - manifest.json (PWA manifest)
      * - vc-phoenix.svg (Logo)
+     * - og-image.png (Open Graph Image)
      */
-    '/((?!favicon.ico|manifest.json|vc-phoenix.svg).*)',
+    '/((?!favicon.ico|manifest.json|vc-phoenix.svg|og-image.png).*)',
   ],
 };
 
@@ -45,7 +46,7 @@ export default async function middleware(req) {
     <title>Login - VC Phönix</title>
     <meta property="og:title" content="VC Phönix Vereinskalender">
     <meta property="og:description" content="Alle Termine, Spiele und Events des VC Phönix. (Intern)">
-    <meta property="og:image" content="https://reogaro.github.io/phoenix-calendar/vc-phoenix.svg">
+    <meta property="og:image" content="https://phoenix-calendar.vercel.app/og-image.png">
     <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
@@ -137,7 +138,7 @@ export default async function middleware(req) {
 </html>`;
 
   return new Response(html, {
-    status: 401,
+    status: 200,
     headers: {
       'Content-Type': 'text/html; charset=utf-8'
     }
