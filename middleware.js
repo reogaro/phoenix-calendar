@@ -43,6 +43,10 @@ export default async function middleware(req) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - VC Phönix</title>
+    <meta property="og:title" content="VC Phönix Vereinskalender">
+    <meta property="og:description" content="Alle Termine, Spiele und Events des VC Phönix. (Intern)">
+    <meta property="og:image" content="https://reogaro.github.io/phoenix-calendar/vc-phoenix.svg">
+    <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         body {
