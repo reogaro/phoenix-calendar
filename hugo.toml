@@ -1,4 +1,4 @@
-baseURL = 'https://vcphoenix.github.io/'
+baseURL = 'https://reogaro.github.io/phoenix-calendar/'
 locale = 'de-DE'
 title = 'VC Phönix'
 disableKinds = ["taxonomy", "term"]
