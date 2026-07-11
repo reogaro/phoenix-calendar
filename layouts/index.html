@@ -5,9 +5,9 @@
         <h1 class="home-title">VC Phoenix</h1>
     </div>
     <nav class="home-nav fade-in" style="animation-delay: 0.3s;">
-        <a href="/about/" class="home-link">Über uns</a>
-        <a href="/news/" class="home-link">News</a>
-        <a href="/calendar/" class="home-link">Kalender</a>
+        <a href="{{ "about/" | relURL }}" class="home-link">Über uns</a>
+        <a href="{{ "news/" | relURL }}" class="home-link">News</a>
+        <a href="{{ "calendar/" | relURL }}" class="home-link">Kalender</a>
     </nav>
 </div>
 {{ end }}
