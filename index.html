@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VC Phönix</title>
+    
+    <!-- PWA & SEO Meta Tags -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="theme-color" content="#ff5800">
+    <meta property="og:title" content="VC Phönix Vereinskalender">
+    <meta property="og:description" content="Alle Termine, Spiele und Events des VC Phönix.">
+    <meta property="og:image" content="./vc-phoenix.svg">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" href="./favicon.ico">
+    <link rel="manifest" href="./manifest.json">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #ff5800;
+            --bg-body: var(--primary-orange);
+            --card-bg: #ffffff;
+            --text-main: #111827;
+            --text-light: #ffffff;
+            --btn-bg: #111827;
+            --btn-hover: #374151;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            --shadow-button: 0 4px 6px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-body);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 2rem 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            width: 140px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.2));
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0;
+            color: var(--text-light);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0 0 1.5rem 0;
+            color: var(--text-main);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            text-shadow: 1px 1px 0 rgba(255,255,255,1);
+        }
+
+        .calendar-wrapper {
+            width: 100%;
+            background: var(--card-bg);
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow-xl);
+            margin-bottom: 3rem;
+            box-sizing: border-box;
+        }
+
+        .calendar-iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%; 
+            overflow: hidden;
+            background: #f8fafc;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { 
+            0% { transform: translate(-50%, -50%) rotate(0deg); } 
+            100% { transform: translate(-50%, -50%) rotate(360deg); } 
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            z-index: 10;
+        }
+
+        .buttons-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-ics {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--btn-bg);
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            box-shadow: var(--shadow-button);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-ics:hover {
+            background: var(--btn-hover);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-ics svg {
+            width: 24px;
+            height: 24px;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+        }
+
+        .btn-pwa {
+            display: none; /* Shown by JS when installable */
+            align-items: center;
+            gap: 0.5rem;
+            background: #ffffff;
+            color: var(--text-main);
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-pwa:hover {
+            background: #f1f5f9;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 4rem 2rem;
+            }
+            header {
+                padding: 0;
+            }
+            h1 {
+                font-size: 4.5rem;
+            }
+            .calendar-wrapper {
+                padding: 2.5rem;
+                border-radius: 16px;
+                border: 1px solid rgba(255,255,255,0.2);
+            }
+            .calendar-iframe-container {
+                padding-bottom: 65%;
+                border-radius: 12px;
+                border: 1px solid rgba(0,0,0,0.08);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="./vc-phoenix.svg" alt="VC Phönix Logo" class="logo">
+            <h1>VC PHÖNIX</h1>
+        </header>
+
+        <div class="calendar-wrapper">
+            <h2>Vereinskalender</h2>
+            <div class="calendar-iframe-container">
+                <!-- Loading spinner that sits behind the iframe -->
+                <div class="spinner"></div>
+                <iframe src="https://calendar.google.com/calendar/embed?src=604a8e9bc6837da7f58ce864522a5a8a981b64b36fb97f9d9abbdc851ab79d42%40group.calendar.google.com&ctz=Europe%2FBerlin&hl=de&wkst=2&bgcolor=%23ffffff&showPrint=0&showCalendars=0&showTz=0&showTitle=0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+
+        <div class="buttons-wrapper">
+            <a href="https://calendar.google.com/calendar/ical/604a8e9bc6837da7f58ce864522a5a8a981b64b36fb97f9d9abbdc851ab79d42%40group.calendar.google.com/public/basic.ics" class="btn-ics">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                iCal abonnieren
+            </a>
+            
+            <button id="pwa-install-btn" class="btn-pwa">
+                📱 Zum Startbildschirm hinzufügen
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // PWA Installation Logic
+        let deferredPrompt;
+        const installBtn = document.getElementById('pwa-install-btn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome from showing the mini-infobar automatically
+            e.preventDefault();
+            deferredPrompt = e;
+            // Update UI to notify the user they can add to home screen
+            installBtn.style.display = 'flex';
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                // Show the install prompt
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    installBtn.style.display = 'none';
+                }
+                deferredPrompt = null;
+            }
+        });
+
+        // Register Service Worker required for PWA installation
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch((err) => {
+                    console.log('SW registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
