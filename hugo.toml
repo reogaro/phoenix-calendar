@@ -1,6 +1,6 @@
 baseURL = 'https://vcphoenix.github.io/'
 locale = 'de-DE'
-title = 'Volleyball Club Phoenix'
+title = 'VC Phönix'
 disableKinds = ["taxonomy", "term"]
 
 [markup.goldmark.renderer]

@@ -4,7 +4,7 @@ date: 2026-07-11
 draft: false
 ---
 
-Hier findest du alle aktuellen Neuigkeiten rund um den VC Phoenix.
+Hier findest du alle aktuellen Neuigkeiten rund um den VC Phönix.
 
 ## Neue Webseite
 *Juli 2026*

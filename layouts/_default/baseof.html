@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ block "title" . }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-    <meta name="description" content="Volleyball Club Phoenix - Der dynamische Volleyballverein.">
+    <meta name="description" content="VC Phönix - Der dynamische Volleyballverein.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -17,8 +17,8 @@
         <header class="header">
             <div class="logo">
                 <a href="{{ .Site.BaseURL }}">
-                    <img src="{{ "vc-phoenix.svg" | relURL }}" alt="VC Phoenix Logo" class="header-logo">
-                    VC PHOENIX
+                    <img src="{{ "vc-phoenix.svg" | relURL }}" alt="VC Phönix Logo" class="header-logo">
+                    VC PHÖNIX
                 </a>
             </div>
             <nav class="nav">
@@ -37,7 +37,7 @@
 
         {{ if not .IsHome }}
         <footer class="footer">
-            <p>&copy; {{ now.Year }} Volleyball Club Phoenix. Alle Rechte vorbehalten.</p>
+            <p>&copy; {{ now.Year }} VC Phönix. Alle Rechte vorbehalten.</p>
         </footer>
         {{ end }}
     </div>

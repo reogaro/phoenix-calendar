@@ -4,7 +4,7 @@ date: 2026-07-11
 draft: false
 ---
 
-Willkommen beim **Volleyball Club Phoenix**!
+Willkommen beim **VC Phönix**!
 
 Wir sind ein junger Volleyballverein, der seit 2023 zusammen spielt. Egal ob Anfänger oder erfahrener Profi, bei uns findet jeder seinen Platz auf dem Spielfeld.
 
