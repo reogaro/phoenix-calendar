@@ -6,8 +6,9 @@ export const config = {
      * - manifest.json (PWA manifest)
      * - vc-phoenix.svg (Logo)
      * - og-image.png (Open Graph Image)
+     * - icon-192.png, icon-512.png, apple-touch-icon.png (PWA Icons)
      */
-    '/((?!favicon.ico|manifest.json|vc-phoenix.svg|og-image.png).*)',
+    '/((?!favicon.ico|manifest.json|vc-phoenix.svg|og-image.png|icon-192.png|icon-512.png|apple-touch-icon.png).*)',
   ],
 };
 
